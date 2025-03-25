@@ -3,7 +3,8 @@
 I dette prosjektet skal vi kikke på software arkitektprinsippet som heter MVC, Model, View, Controller. <br>
 Dette designprinsippet er en avart av Layered architecture prinsippet, som baserer seg på at hvert "lag" av applikasjonen vår kun har ansvar for sitt lag. <br>
 <br>
-MVC tar dette separation of Concern elementet av Layered Architecture enda mer. <br>
+MVC tar dette separation of Concern elementet av Layered Architecture enda lengre,
+ved å separere opp appen i tre distinkte lag, modell, view og controll. <br>
 I dette prosjektet skal vi lage en enkel taskmanager app, som skal kunne gjøre "crud" operasjoner (Create, Read, Update, Delete) mot x antall tasks som holdes i minnet til pcen vår. <br>
 
 Vi skal ha et controller lag. Dette controller laget skal kunne være mellomlaget mellom brukerinput, og funksjoner som skal kjøres.<br>
@@ -33,7 +34,7 @@ Har ansvar for datastruktur og business logikk.
     - DueDate, Når skal tasken være gjennomført.
     - MarkAsComplete, en metode som markerer en task som ferdig. 
 - Skal representere henting og lagring av data i en manager eller context class.<br>
-- Skal representere regler for validering og inserting og generell businesslogikk. 
+- Skal representere regler for validering og inserting og generell businesslogikk.<br>
     Detaljer:
     -   _tasks, intern lagring av tasks objekter.
     -   _nextId, en hjelpeproperty som kan gi hver task en unik autoinkrementerende id.
@@ -51,7 +52,7 @@ Skal representere datasettet via en leslig ui til brukeren.<br>
 - Skal vise et enkelt ux/ui med menyer og options.
 - Skal kunne håndtere brukerinput.
 - Har ingen kontroll over State til Model.
-- presenterer data agnostisk basert på inkommende data.
+- presenterer data agnostisk basert på inkommende data.<br>
     Detaljer:
     - DisplayMainMenu -> Viser en main menu til bruker.
     - DisplayTasks(liste av tasks, headeroption) -> Rendrer ut en liste av tasks. 
@@ -65,8 +66,8 @@ Denne delen av applikasjonen skal være coordineringslaget av applikasjonen vår
 Den skal koordinere Modeller mot Views og vise versa. <br>
 - Hvis et view henter brukerinput, skal controlleren koordinere og behandle dette mot vår modell.
 - Oppdaterer modellen om det trengs.
-- Velger hva View som skal kjøres neste gang.
-- Detaljer:
+- Velger hva View som skal kjøres neste gang.<br>
+    Detaljer:
     - _taskContext -> informasjon om alle tasks.
     - _viewGenerator -> informasjon om Views.
     - Run -> Kjører applikasjonen vår.
@@ -90,8 +91,8 @@ La oss kikke litt i detalj hvordan Controlleren behandler Component Interaction:
 ## Designprinsipp i MVC:
 
 ### Inkapsling (Separation of Concerns)
-Hver komponent har en klar, og spesifikk rolle.
-Noe som gjør det lettere å forstå hvordan koden fungerer, lettere å maintaine i lang tid, og lettere å utvide. 
+Hver komponent lever i sitt eget lag, og har kun ansvar for kode og state i sitt lag.
+Dette kan gjøre det lettere å forstå hvordan koden fungerer, lettere å maintaine i lang tid, og lettere å utvide med ny funksjonalitet senere. 
 
 ### Single Responsibility (SRP)
 Hver klasse har en primær rolle:
@@ -101,4 +102,4 @@ Hver klasse har en primær rolle:
 - TaskController: Koordinerer actions mellom Model og View.
 
 ### Loose Coupling
-Komponenter snakker sammen via Interfaces, men vet ellers ingenting om hverandre.<br> Hvis den underliggende logikken i hvert lag endrer seg, vil godt utformete interfaces la det være mulig å endre logikke i en komponent, uten å måtte endre noe i de andre. 
+Komponenter snakker sammen via Interfaces, men vet ellers ingenting om hverandre.<br> Hvis den underliggende logikken i hvert lag endrer seg, vil godt utformete interfaces la det være mulig å endre logikke i en komponent, uten å måtte endre noe av logikken i de andre. 
