@@ -1,9 +1,12 @@
+using Core.Classes;
+using Core.Interfaces;
+
 namespace Tests;
 
 public class TaskContextTests
 {
     //En felles Arrange av en context vi kan bruke i alle testene våre.
-    private readonly TaskContextTests _context;
+    private readonly TaskContext _context;
 
     public TaskContextTests()
     {
@@ -19,8 +22,8 @@ public class TaskContextTests
     public void TaskContextConstructorInitialValues()
     {
         //Assert
-        Assert.Equal(0, _context.Count);
-        Assert.Equal(0, _context.GetAllTasks().Count);
+        Assert.Equal(4, _context.Count);
+        Assert.Equal(4, _context.GetAllTasks().Count);
     }
 
     [Fact]
@@ -33,7 +36,7 @@ public class TaskContextTests
         var dueDate = DateTime.Now.AddDays(4);
 
         //Act
-        var addTask = _context.AddTask(title, description, duedate);
+        var addedTask = _context.AddTask(title, description, dueDate);
 
         //Assert
         Assert.NotNull(addedTask);
@@ -65,7 +68,7 @@ public class TaskContextTests
         int invalidId = 9999;
 
         //Act
-        var task = _context.GetTaskbyId(invalidId);
+        var task = _context.GetTaskById(invalidId);
 
         //Assert
         Assert.Null(task);
@@ -76,7 +79,7 @@ public class TaskContextTests
     {
         //Arrange
         var task = _context.GetTaskById(1);
-        Assert.False(task.IsCompleted);
+        Assert.False(task!.IsCompleted);
 
         //Act
         var result = _context.CompleteTask(1);
@@ -138,7 +141,7 @@ public class TaskContextTests
 
 
         //Act
-        var completedTask = _context.GetCompletedTasks();
+        var completedTask = _context.GetCompleteTasks();
 
 
         //Assert
@@ -150,7 +153,7 @@ public class TaskContextTests
     public void GetPendingTasksReturnsOnlyPendingTasks()
     {
         //Act
-        var pendingTasks = _context.GetPendingTasks()
+        var pendingTasks = _context.GetPendingTasks();
 
         //Assert
         Assert.All(pendingTasks, t => Assert.False(t.IsCompleted));
