@@ -146,12 +146,15 @@ public class TaskContextTests
 
         //Assert
         Assert.True(completedTask.Count > 0);
-        Assert.All(completedTask, t => Assert.True(t.IsCompleted));
+        Assert.All(completedTask, task => Assert.True(task.IsCompleted));
     }
 
     [Fact]
     public void GetPendingTasksReturnsOnlyPendingTasks()
     {
+        //Arrange
+        _context.CompleteTask(1);
+        
         //Act
         var pendingTasks = _context.GetPendingTasks();
 

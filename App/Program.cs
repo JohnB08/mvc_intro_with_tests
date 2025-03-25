@@ -1,9 +1,12 @@
-﻿namespace App;
+﻿using Core.Classes;
+
+namespace App;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var controller = new TaskController(new TaskContext(), new ViewGenerator());
+        controller.Run();
     }
 }

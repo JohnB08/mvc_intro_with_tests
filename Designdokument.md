@@ -57,8 +57,8 @@ Skal representere datasettet via en leslig ui til brukeren.<br>
     - DisplayMainMenu -> Viser en main menu til bruker.
     - DisplayTasks(liste av tasks, headeroption) -> Rendrer ut en liste av tasks. 
     - DisplayTaskDetails(enkel Task) -> Viser info om en enkel task.
-    - GetInput(prompt) -> Henter brukerinput via en prompt. 
-    - DisplayMessage(message, displayOptions) -> Viser en bedskjed til bruker, kan endre hva type display via display options. 
+    - GetInput(prompt, errorMessage) -> Henter brukerinput via en prompt. 
+    - DisplayMessage(message, color) -> Viser en bedskjed til bruker, kan endre hva type display via display options. 
     - WaitForKey -> Venter til bruker trykker en knapp, i.e. velger en ui option. 
 
 ### Controller
@@ -75,6 +75,7 @@ Den skal koordinere Modeller mot Views og vise versa. <br>
     - ViewPendingTasks -> Viser uferdige tasks til bruker.
     - ViewCompletedTask -> Viser bare ferdige tasks til bruker.
     - AddTask -> Legger til en ny task.
+    - ViewTaskDetail -> Se detaljer for en spesifikk Task.
     - CompleteTask -> markerer en task som ferdig.
     - DeleteTask -> fjerner en task.
 - Er på mange måter organisatoren eller dirigenten for programflyten i programmet vårt.
