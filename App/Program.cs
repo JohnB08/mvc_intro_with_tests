@@ -1,4 +1,4 @@
-﻿using Core.Classes.Controllers;
+﻿using Core.Classes.Controller;
 using Core.Classes.Models;
 using Core.Classes.Views;
 
@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var controller = new TaskController(new TaskContext(), new ViewGenerator());
+        var controller = new TaskController();
         controller.Run();
     }
 }
