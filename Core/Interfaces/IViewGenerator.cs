@@ -1,4 +1,4 @@
-using Core.Classes;
+using Core.Classes.Models;
 
 namespace Core.Interfaces;
 

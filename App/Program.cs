@@ -1,4 +1,6 @@
-﻿using Core.Classes;
+﻿using Core.Classes.Controllers;
+using Core.Classes.Models;
+using Core.Classes.Views;
 
 namespace App;
 

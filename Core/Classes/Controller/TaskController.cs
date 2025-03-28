@@ -1,6 +1,8 @@
 using Core.Interfaces;
+using Core.Classes.Models;
+using Core.Classes.Views;
 
-namespace Core.Classes;
+namespace Core.Classes.Controllers;
 
 
 public class TaskController(TaskContext context, ViewGenerator view) : ITaskController

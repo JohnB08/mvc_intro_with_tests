@@ -1,6 +1,6 @@
 using Core.Interfaces;
 
-namespace Core.Classes;
+namespace Core.Classes.Models;
 
 public class TaskContext : ITaskContext
 {

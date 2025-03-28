@@ -1,6 +1,7 @@
 using Core.Interfaces;
+using Core.Classes.Models;
 
-namespace Core.Classes;
+namespace Core.Classes.Views;
 
 public class ViewGenerator : IViewGenerator
 {

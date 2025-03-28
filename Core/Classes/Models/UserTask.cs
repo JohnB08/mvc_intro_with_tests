@@ -1,6 +1,6 @@
 using Core.Interfaces;
 
-namespace Core.Classes;
+namespace Core.Classes.Models;
 
 public class UserTask(int id, string title, string description, DateTime dueDate) : IUserTask
 {
